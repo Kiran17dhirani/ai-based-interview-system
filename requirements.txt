@@ -7,7 +7,7 @@ seaborn
 scikit-learn
 wordcloud
 PyPDF2
-speechrecognition
+SpeechRecognition
 elevenlabs==0.2.26
 openai
 requests
