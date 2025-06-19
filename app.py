@@ -121,24 +121,22 @@ def main():
             audio_path = speak_response(bot_reply)
             st.audio(audio_path, format="audio/mp3", autoplay=True)
 
-   API_BASE_URL = "https://your-api-domain.com"
+API_BASE_URL = "https://your-api-domain.com"
 
-   def get_next_ai_question():
-       response = requests.get(f"{API_BASE_URL}/next-question")
-      if response.status_code == 200:
-         return response.json().get("question")
-      return None
+def get_next_ai_question():
+    response = requests.get(f"{API_BASE_URL}/next-question")
+    if response.status_code == 200:
+        return response.json().get("question")
+    return None
 
-   def submit_candidate_answer(answer_text):
-     payload = {"answer": answer_text}
-     response = requests.post(f"{API_BASE_URL}/analyze-answer", json=payload)
-     if response.status_code == 200:
-         return response.json()
-      return None
-
+def submit_candidate_answer(answer_text):
+    payload = {"answer": answer_text}
+    response = requests.post(f"{API_BASE_URL}/analyze-answer", json=payload)
+    if response.status_code == 200:
+        return response.json()
+    return None
 
 if __name__ == "__main__":
     main()
-
 
 
