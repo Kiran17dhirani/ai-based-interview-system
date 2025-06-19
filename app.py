@@ -9,6 +9,7 @@ import openai
 import speech_recognition as sr
 import tempfile
 import requests
+import os
 
 # Download NLTK data
 nltk.download('punkt')
@@ -137,6 +138,8 @@ def submit_candidate_answer(answer_text):
     return None
 
 if __name__ == "__main__":
-    main()
+    port = int(os.environ.get("PORT", 8080))  # Default to 8080 if PORT not set
+    app.run(host="0.0.0.0", port=port)
+
 
 
