@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 from videosdk import VideoSDK, MeetingConfig, MeetingEventHandler, ParticipantEventHandler, Stream
 
 class AIInterviewer:
@@ -49,7 +50,11 @@ class AIInterviewer:
         pass
 
 if __name__ == "__main__":
-    meeting_id = "your_meeting_id"
-    auth_token = "your_auth_token"
+    meeting_id = os.environ.get("VIDEO_MEETING_ID")
+    auth_token = os.environ.get("VIDEO_API_TOKEN")
+
+    if not meeting_id or not auth_token:
+        raise ValueError("Missing VIDEO_MEETING_ID or VIDEO_API_TOKEN environment variables")
+
     interviewer = AIInterviewer(meeting_id, auth_token)
     asyncio.run(interviewer.join_meeting())
